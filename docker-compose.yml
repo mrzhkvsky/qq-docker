@@ -1,0 +1,28 @@
+version: '3.7'
+
+networks:
+  backend:
+    driver: bridge
+
+services:
+
+  nginx:
+    build:
+      context: ./nginx
+    networks:
+      - backend
+    ports:
+      - 80:80
+    volumes:
+      - ./../www:/var/www
+      - ./nginx/conf.d:/etc/nginx/conf.d
+      - ./logs/nginx:/var/log/nginx
+
+  node:
+    build:
+      context: ./node
+    ports:
+      - "3000:3000"
+    tty: true
+    volumes:
+      - ./../www:/var/www
