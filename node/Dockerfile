@@ -1,5 +1,5 @@
 FROM node:lts-alpine
 
-RUN yarn global add @vue/cli @vue/cli-service
+RUN yarn global add @vue/cli
 
 WORKDIR /var/www/qq-frontend
