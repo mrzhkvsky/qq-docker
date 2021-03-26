@@ -13,6 +13,7 @@ services:
       - backend
     ports:
       - 80:80
+    restart: unless-stopped
     volumes:
       - ./../www:/var/www
       - ./nginx/conf.d:/etc/nginx/conf.d
@@ -25,6 +26,7 @@ services:
       - mysql
     networks:
       - backend
+    restart: unless-stopped
     volumes:
       - ./../www:/var/www
       - ./php-fpm/opcache.ini:/usr/local/etc/php/conf.d/opcache.ini
@@ -44,6 +46,7 @@ services:
       - backend
     ports:
       - 3306:3306
+    restart: unless-stopped
     volumes:
       - ./mysql/my.cnf:/etc/mysql/conf.d/my.cnf
       - ./data/mysql:/var/lib/mysql
